@@ -1,5 +1,5 @@
 # Kiva-exercise
-This project is used to solve the Kiva take home exercise. This is a spring boot application using Jersey , Hikaricp , Hibernate.
+This project is used to solve the Kiva take home exercise. This is a spring boot application using Jersey , Hikaricp , Hibernate, Mockito for Testing , caffeine for caching and MYSql for persistance.
 This project also has some basic usage of Java8 Features as CompletableFuture.This project also contains a standart method of seperating different layers of the server.
 
 ## Requirements
@@ -11,6 +11,24 @@ This project also has some basic usage of Java8 Features as CompletableFuture.Th
 2. Change the configuration of the DB in the application.properties in the src/main/resource folder.
 3. Run the SQL form the file DB.sql in the src/main/resource folder.
 3. mvn spring-boot:run
+
+## How Disperse is calculated
+1. Make a rest api request to KIVA API to get loan.
+2. Make a rest api request to KIVA API to get Lenders.
+3. Calculate amount each lender owns using formulae loan/number of lenders.
+4. Insert the Loan Payment for each lender to the DB.
+
+## How Schedule is calculated.(Did not make sense to persist the data in the DB)
+1. Take the total amount the lender own /number of installments
+2. On the fly calculate the payment dates by adding 1 month each on the first payment date(taking montly payment statergy into consideration);
+
+## How payment is made.
+1. Once a request to make the payment it is persisted in the DB.
+2. The Loan Payment is updated for its outstandingAmount and outstandingInstallments and persisted in DB. So now we have the updated version.
+
+## How payment is retrived.
+1. Based on the lender payment id relation between the LenderPayment Table and the Payment Table we retrive all the payments from the Payment Table.
+
 
 # Exemple
 ```
