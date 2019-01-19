@@ -12,16 +12,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="better-coder" />
+        <module name="exercise" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="better-coder" target="1.8" />
+      <module name="exercise" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="better-coder" options="-parameters" />
+      <module name="exercise" options="-parameters" />
     </option>
   </component>
 </project>
