@@ -5,7 +5,7 @@
 ```
 TO DISPERSE LOAN TO LENDERS
 METHOD POST
-URL localhost:8080/loans/1681633/lenders/calculate
+URL localhost:8080/loans/1681633/lenders/disperse
 BODY: 
 {
 	"installments":7,
@@ -87,7 +87,7 @@ RESPONSE:
 
 TO GET SCHEDULE
 METHOD: GET
-URL: localhost:8080/loans/1681633/lenders/elizabeth6595/schedule
+URL: localhost:8080/loans/1681633/lenders/elizabeth6595/schedules
 RESPONSE:
 [
     {
@@ -146,7 +146,7 @@ RESPONSE:
 
 TO GET PAYMENTS MADE
 METHOD: GET
-URL:localhost:8080/loans/1681633/lenders/elizabeth6595/payment
+URL:localhost:8080/loans/1681633/lenders/elizabeth6595/payments
 RESPONSE:
 [
     {
