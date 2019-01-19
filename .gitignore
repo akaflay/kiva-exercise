@@ -7,6 +7,7 @@ exercise.iml
 .idea/misc.xml
 .idea/modules.xml
 .idea/uiDesigner.xml
+.idea/compiler.xml
 .DS_Store
 src/.DS_Store
 src/main/.DS_Store
