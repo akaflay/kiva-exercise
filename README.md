@@ -36,7 +36,8 @@ This project also has some basic usage of Java8 Features as CompletableFuture.Th
 4. The total amount for the lender has been distributed equally for all the installments.(May be different in some amount in decimal)
 5. The Schedule does not take considerations for the holidays.
 6. If there is no lender id in the lender response have made the lender id as annonymus.
-7. Not all the test scenerios has been handled in the tests.
+7. Considering only 50 lenders per loan. Only making one request to get lender not considering paging to get more lenders.
+8. Not all the test scenerios has been handled in the tests.
 
 # Exemple
 ```
