@@ -29,6 +29,13 @@ This project also has some basic usage of Java8 Features as CompletableFuture.Th
 ## How payment is retrived.
 1. Based on the lender payment id relation between the LenderPayment Table and the Payment Table we retrive all the payments from the Payment Table.
 
+## Limitations
+1. Not all validation has been handeled.
+2. While making the payment we do not check against the schedule payment. It is just checked against the outstanding amount and the outstanding installments.
+3. The total funded amount is has been distributed equally for all the lenders.(May be different in some amount in decimal)
+4. The total amount for the lender has been distributed equally for all the installments.(May be different in some amount in decimal)
+5. The Schedule does not take considerations for the holidays.
+6. If there is no lender id in the lender response have made the lender id as annonymus.
 
 # Exemple
 ```
