@@ -1,5 +1,5 @@
 # kiva-exercise
-This project is used to solve the Kiva Take home exercise. This is a spring boot application using Jersey , Hikaricp , Hibernate.
+This project is used to solve the Kiva take home exercise. This is a spring boot application using Jersey , Hikaricp , Hibernate.
 This project also has some basic usage of Java8 Features as CompletableFuture.This project also contains a standart method of seperating different layers of the server.
 
 ## Requirements
