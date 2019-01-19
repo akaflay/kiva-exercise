@@ -38,8 +38,8 @@
         <appender-ref ref="Console" />
     </root>
  
-    <!-- LOG "code.better.com" at DEBUG level -->
-    <logger name="code.better.com" level="debug" additivity="false">
+    <!-- LOG "kiva.exercise.com" at DEBUG level -->
+    <logger name="kiva.exercise.com" level="debug" additivity="false">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </logger>
