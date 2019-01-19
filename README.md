@@ -167,6 +167,172 @@ RESPONSE:
         "createdEpoc": 1547879321
     }
 ]
+
+TO GET LOAN BY FUNDED STATUS
+METHOD:GET
+URL localhost:8080/loans
+RESPONSE:
+{
+##TO LARGE TO BE ADDED
+}
+
+TO GET LOAN BY ID
+METHOD:GET
+URL localhost:8080/loans/1681633
+RESPONSE:
+{
+  "loans": [
+    {
+      "id": 1681633,
+      "name": "Grace",
+      "description": {
+        "languages": [
+          "en"
+        ],
+        "texts": {
+          "en": "Grace is a married woman. She has four children. She describes herself to be industrious. She operates a farm where she sells milk from her dairy farm. She has been involved in this business for 10 years. Her business is located in a good area and her primary customers are locals. She describes her biggest business challenge to be inadequate working capital. <br /><br />She will use the KES 11,000 loan to buy another dairy cow. Her business goal is to have a bigger dairy farm within five years. She hopes that in the future, she will be financially stable to provide for her family's financial needs. This is her second loan with SMEP Microfinance Bank. The previous loan was repaid successfully. She will use the anticipated profits to educate her children."
+        }
+      },
+      "status": "funded",
+      "funded_amount": 125,
+      "image": {
+        "id": 3045338,
+        "template_id": 1
+      },
+      "activity": "Dairy",
+      "sector": "Agriculture",
+      "themes": [
+        "Rural Exclusion"
+      ],
+      "use": "to buy another dairy cow.",
+      "location": {
+        "country_code": "KE",
+        "country": "Kenya",
+        "town": "Kitale",
+        "geo": {
+          "level": "town",
+          "pairs": "1.019089 35.002305",
+          "type": "point"
+        }
+      },
+      "partner_id": 138,
+      "posted_date": "2019-01-17T19:50:04Z",
+      "planned_expiration_date": "2019-02-16T19:50:04Z",
+      "loan_amount": 125,
+      "lender_count": 5,
+      "bonus_credit_eligibility": false,
+      "tags": [
+        {
+          "name": "user_favorite"
+        },
+        {
+          "name": "#Animals"
+        }
+      ],
+      "borrowers": [
+        {
+          "first_name": "Grace",
+          "last_name": "",
+          "gender": "F",
+          "pictured": true
+        }
+      ],
+      "terms": {
+        "disbursal_date": "2018-12-27T08:00:00Z",
+        "disbursal_currency": "KES",
+        "disbursal_amount": 11000,
+        "repayment_interval": "Monthly",
+        "repayment_term": 8,
+        "loan_amount": 125,
+        "local_payments": [],
+        "scheduled_payments": [],
+        "loss_liability": {
+          "nonpayment": "lender",
+          "currency_exchange": "shared",
+          "currency_exchange_coverage_rate": 0.1
+        }
+      },
+      "payments": [],
+      "funded_date": "2019-01-17T21:53:54Z",
+      "journal_totals": {
+        "entries": 0,
+        "bulkEntries": 0
+      },
+      "translator": {
+        "byline": "Lauri Fried-Lee",
+        "image": 2210835
+      }
+    }
+  ]
+}
+
+
+TO GET LENDER BY LOAN ID
+METHOD: GET
+URL: localhost:8080/loans/1681633/lenders
+RESPONSE:
+{
+  "paging": {
+    "page": 1,
+    "total": 5,
+    "page_size": 50,
+    "pages": 1
+  },
+  "lenders": [
+    {
+      "lender_id": "timothy7934",
+      "name": "Timothy",
+      "image": {
+        "id": 726677,
+        "template_id": 1
+      },
+      "whereabouts": "",
+      "uid": "timothy7934"
+    },
+    {
+      "lender_id": "elizabeth6595",
+      "name": "Elizabeth",
+      "image": {
+        "id": 1748433,
+        "template_id": 1
+      },
+      "whereabouts": "",
+      "uid": "elizabeth6595"
+    },
+    {
+      "lender_id": "david1820",
+      "name": "David",
+      "image": {
+        "id": 947478,
+        "template_id": 1
+      },
+      "whereabouts": "Morphett Vale SA",
+      "country_code": "AU",
+      "uid": "david1820"
+    },
+    {
+      "lender_id": "andrea9724",
+      "name": "Andrea",
+      "image": {
+        "id": 726677,
+        "template_id": 1
+      },
+      "whereabouts": "",
+      "uid": "andrea9724"
+    },
+    {
+      "lender_id": "claudio9326",
+      "name": "Claudio Screpanti",
+      "image": {
+        "id": 839844,
+        "template_id": 1
+      },
+      "whereabouts": "Basel",
+      "country_code": "CH",
+      "uid": "claudio9326"
+    }
+  ]
+}
 ```
 ## Questions and Concerns
 https://better-coder.slack.com/
