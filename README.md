@@ -25,7 +25,7 @@ BODY:
 RESPONSE:
 [
     {
-        "lenderPaymentId": "4f7a5ae2-1707-43f5-9c36-e9d4d136ff1d",
+        "lenderPaymentId": "745e0abf-cd64-4ca7-81dc-d8c8ab410d65",
         "id": {
             "loanId": "1681633",
             "lenderId": "timothy7934"
@@ -35,11 +35,11 @@ RESPONSE:
         "installments": 7,
         "outstandingInstallments": 7,
         "firstinstallmentDate": "01/10/2019",
-        "createdEpoc": 1547878249,
-        "updatedEpoc": 1547878249
+        "createdEpoc": 1547879314,
+        "updatedEpoc": 1547879314
     },
     {
-        "lenderPaymentId": "19cc2fd4-4c4d-4b9b-bdd9-34fb3131014a",
+        "lenderPaymentId": "15d4e759-4740-4533-9381-9d18ba3900a4",
         "id": {
             "loanId": "1681633",
             "lenderId": "elizabeth6595"
@@ -49,11 +49,11 @@ RESPONSE:
         "installments": 7,
         "outstandingInstallments": 7,
         "firstinstallmentDate": "01/10/2019",
-        "createdEpoc": 1547878249,
-        "updatedEpoc": 1547878249
+        "createdEpoc": 1547879314,
+        "updatedEpoc": 1547879314
     },
     {
-        "lenderPaymentId": "90fe1e42-d9e7-47c7-a194-9878545304d0",
+        "lenderPaymentId": "f3698506-6843-4457-b420-9fb9d059cd92",
         "id": {
             "loanId": "1681633",
             "lenderId": "david1820"
@@ -63,11 +63,11 @@ RESPONSE:
         "installments": 7,
         "outstandingInstallments": 7,
         "firstinstallmentDate": "01/10/2019",
-        "createdEpoc": 1547878249,
-        "updatedEpoc": 1547878249
+        "createdEpoc": 1547879314,
+        "updatedEpoc": 1547879314
     },
     {
-        "lenderPaymentId": "6916e4d0-3206-4bd6-90d2-1eebdadba44f",
+        "lenderPaymentId": "01a1f30f-108e-459d-93bb-92addcde5966",
         "id": {
             "loanId": "1681633",
             "lenderId": "andrea9724"
@@ -77,11 +77,11 @@ RESPONSE:
         "installments": 7,
         "outstandingInstallments": 7,
         "firstinstallmentDate": "01/10/2019",
-        "createdEpoc": 1547878249,
-        "updatedEpoc": 1547878249
+        "createdEpoc": 1547879314,
+        "updatedEpoc": 1547879314
     },
     {
-        "lenderPaymentId": "f4494807-5f05-407a-bf37-0f8b54179fb5",
+        "lenderPaymentId": "36c0de92-4bab-4c5c-9276-a9e8391c1e15",
         "id": {
             "loanId": "1681633",
             "lenderId": "claudio9326"
@@ -91,8 +91,8 @@ RESPONSE:
         "installments": 7,
         "outstandingInstallments": 7,
         "firstinstallmentDate": "01/10/2019",
-        "createdEpoc": 1547878249,
-        "updatedEpoc": 1547878249
+        "createdEpoc": 1547879314,
+        "updatedEpoc": 1547879314
     }
 ]
 
@@ -141,7 +141,7 @@ BODY:
 }
 RESPONSE:
 {
-    "lenderPaymentId": "19cc2fd4-4c4d-4b9b-bdd9-34fb3131014a",
+    "lenderPaymentId": "15d4e759-4740-4533-9381-9d18ba3900a4",
     "id": {
         "loanId": "1681633",
         "lenderId": "elizabeth6595"
@@ -151,8 +151,8 @@ RESPONSE:
     "installments": 7,
     "outstandingInstallments": 6,
     "firstinstallmentDate": "01/10/2019",
-    "createdEpoc": 1547871569,
-    "updatedEpoc": 1547871579
+    "createdEpoc": 1547879314,
+    "updatedEpoc": 1547879321
 }
 
 TO GET PAYMENTS MADE
@@ -161,10 +161,10 @@ URL:localhost:8080/loans/1681633/lenders/elizabeth6595/payments
 RESPONSE:
 [
     {
-        "paymentId": "5c66c210-62b3-4c98-94fc-586a322fca1a",
-        "lenderPaymentId": "19cc2fd4-4c4d-4b9b-bdd9-34fb3131014a",
+        "paymentId": "b4a6e077-3428-423d-805e-98467cee934d",
+        "lenderPaymentId": "15d4e759-4740-4533-9381-9d18ba3900a4",
         "amount": 3.57,
-        "createdEpoc": 1547878294
+        "createdEpoc": 1547879321
     }
 ]
 ```
