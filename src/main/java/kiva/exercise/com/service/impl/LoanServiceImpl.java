@@ -16,6 +16,7 @@ import javax.ws.rs.container.AsyncResponse;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.github.benmanes.caffeine.cache.LoadingCache;
+import kiva.exercise.com.constants.Constants;
 import kiva.exercise.com.dao.ILenderPaymentDao;
 import kiva.exercise.com.dao.IPaymentDao;
 import kiva.exercise.com.pojo.LenderPayment;
@@ -116,9 +117,9 @@ public class LoanServiceImpl implements ILoan {
      */
     public CompletableFuture<List<Payment>> getSchedule(final String loanId, final String lenderId) {
         List<Payment> payments=new ArrayList<>();
-        int installmentMonth=0;
+        int installmentMonth=INTEGER_ZERO;
         LenderPayment dbLenderPayment = lenderPaymentDao.findLenderPaymentsByLoanIdAndLenderId(loanId, lenderId);
-        if (dbLenderPayment != null && dbLenderPayment.getAmount() != 0.00) {
+        if (dbLenderPayment != null && dbLenderPayment.getAmount() != DOUBLE_ZERO) {
             List<Double> amounts=calculateLoanDisperseAmount(dbLenderPayment.getAmount(),dbLenderPayment.getInstallments());
             for(Double amount:amounts){
                 String scheduleDate=createScheduledDate(dbLenderPayment.getFirstinstallmentDate(),installmentMonth);
@@ -146,7 +147,7 @@ public class LoanServiceImpl implements ILoan {
      *
      */
     private String createScheduledDate(final String firstInstallmentDate,final Integer installmentMonth){
-        if(installmentMonth==0) return firstInstallmentDate;
+        if(installmentMonth==INTEGER_ZERO) return firstInstallmentDate;
         String calculatedDate=firstInstallmentDate;
         try {
             SimpleDateFormat df=new SimpleDateFormat("MM/dd/yyyy");
@@ -172,7 +173,7 @@ public class LoanServiceImpl implements ILoan {
     public CompletableFuture<List<Payment>> getPayment(final String loanId, final String lenderId) {
         List<Payment> payments=new ArrayList<>();
         LenderPayment dbLenderPayment = lenderPaymentDao.findLenderPaymentsByLoanIdAndLenderId(loanId, lenderId);
-        if (dbLenderPayment != null && dbLenderPayment.getAmount() != 0.00) {
+        if (dbLenderPayment != null && dbLenderPayment.getAmount() != DOUBLE_ZERO) {
             payments=paymentDao.getByLenderPaymentId(dbLenderPayment.getLenderPaymentId());
         }
         return CompletableFuture.completedFuture(payments);
@@ -191,11 +192,11 @@ public class LoanServiceImpl implements ILoan {
     public CompletableFuture<LenderPayment> makePayment(final String loanId, final String lenderId,
                                                          final LenderPayment lenderPayment) {
         LenderPayment dbLenderPayment = lenderPaymentDao.findLenderPaymentsByLoanIdAndLenderId(loanId, lenderId);
-        if (dbLenderPayment != null && dbLenderPayment.getAmount() != 0.00) {
+        if (dbLenderPayment != null && dbLenderPayment.getAmount() != DOUBLE_ZERO) {
             dbLenderPayment.setUpdatedEpoc(Instant.now().getEpochSecond());
             Double amountToUpdate = getAmountPrecessionToTwoDecimal(dbLenderPayment.getOutstandingAmount() - lenderPayment.getAmount());
             Integer outStandingInstallments=dbLenderPayment.getOutstandingInstallments()-1;
-            if (amountToUpdate >= 0.00 && outStandingInstallments>=0) {
+            if (amountToUpdate >= DOUBLE_ZERO && outStandingInstallments>=INTEGER_ZERO) {
                 dbLenderPayment.setOutstandingAmount(amountToUpdate);
                 dbLenderPayment.setOutstandingInstallments(outStandingInstallments);
                 Payment payment=new Payment.Builder().setLenderPaymentId(dbLenderPayment.getLenderPaymentId()).setAmount(lenderPayment.getAmount()).build();
@@ -263,7 +264,7 @@ public class LoanServiceImpl implements ILoan {
         List<Double> amountList = new ArrayList<>();
         try {
             Double finalValue = getAmountPrecessionToTwoDecimal((Double) totalAmount / parts);
-            Double total = new Double(0);
+            Double total = new Double(INTEGER_ZERO);
             for (int i = 1; i < parts; i++) {
                 total += finalValue;
                 amountList.add(finalValue);
@@ -288,7 +289,7 @@ public class LoanServiceImpl implements ILoan {
      */
 
     private Double getAmountPrecessionToTwoDecimal(final Double amount){
-        Double finalValue=0.00;
+        Double finalValue=DOUBLE_ZERO;
         try {
             DecimalFormat df = new DecimalFormat("0.00");
             String formate = df.format((Double) amount);
@@ -321,7 +322,7 @@ public class LoanServiceImpl implements ILoan {
 
         final Double totalFundedAmount = getTotalFundedAmount(loanResponse);
         final List<LenderPayment> lenderList = getListOfLenders(lenderResponse, loanId);
-        if (totalFundedAmount != 0.00 && !CollectionUtils.isEmpty(lenderList)) {
+        if (totalFundedAmount != DOUBLE_ZERO && !CollectionUtils.isEmpty(lenderList)) {
             List<Double> amountForEachLender = calculateLoanDisperseAmount(totalFundedAmount, lenderList.size());
             updateAmountForEachLender(amountForEachLender, lenderList,lenderPayment);
         }
@@ -343,7 +344,7 @@ public class LoanServiceImpl implements ILoan {
     public void updateAmountForEachLender(final List<Double> amountForEachLender,
                                           final List<LenderPayment> lenderList,
                                           final LenderPayment lenderPayment) {
-        Integer index = 0;
+        Integer index = INTEGER_ZERO;
         Boolean lenderPresentInDB=true;
         for (LenderPayment eachLenderPayment : lenderList) {
             eachLenderPayment.setAmount(amountForEachLender.get(index));
@@ -385,9 +386,9 @@ public class LoanServiceImpl implements ILoan {
         final List<LenderPayment> lenderList = new ArrayList<>();
         final ObjectNode lenderJsonObj = fromJson(lenderResponse,
                 ObjectNode.class);
-        if (lenderJsonObj.hasNonNull("lenders")) {
-            for (JsonNode lender : lenderJsonObj.get("lenders")) {
-                String lenderId = lender.hasNonNull("lender_id") ? lender.get("lender_id").asText() : "anonymous";
+        if (lenderJsonObj.hasNonNull(LENDERS_PATH)) {
+            for (JsonNode lender : lenderJsonObj.get(LENDERS_PATH)) {
+                String lenderId = lender.hasNonNull(LENDER_ID_PATH) ? lender.get(LENDER_ID_PATH).asText() : ANNONYMUS;
                 lenderList.add(new LenderPayment.Builder().setLenderId(lenderId).setLoanId(loanId).build());
             }
         }
@@ -404,14 +405,14 @@ public class LoanServiceImpl implements ILoan {
      *
      */
     private Double getTotalFundedAmount(final String loanResponse) {
-        Double fundedAmount = 0.00;
+        Double fundedAmount = DOUBLE_ZERO;
         final ObjectNode loanJsonObj = fromJson(loanResponse,
                 ObjectNode.class);
-        if (loanJsonObj.hasNonNull("loans")) {
-            ObjectNode eachLoan = fromJson(loanJsonObj.get("loans").get(0).toString(), ObjectNode.class);
+        if (loanJsonObj.hasNonNull(LOAN_PATH)) {
+            ObjectNode eachLoan = fromJson(loanJsonObj.get(LOAN_PATH).get(INTEGER_ZERO).toString(), ObjectNode.class);
 
-            if (eachLoan.hasNonNull("funded_amount")) {
-                fundedAmount = eachLoan.get("funded_amount").asDouble();
+            if (eachLoan.hasNonNull(FUNDED_AMOUNT_PATH)) {
+                fundedAmount = eachLoan.get(FUNDED_AMOUNT_PATH).asDouble();
             }
         }
         return fundedAmount;
