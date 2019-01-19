@@ -1,7 +1,8 @@
 # kiva-exercise
 
 
-#how to use
+# Exemple
+```
 TO DISPERSE LOAN TO LENDERS
 METHOD POST
 URL localhost:8080/loans/1681633/lenders/calculate
@@ -155,3 +156,6 @@ RESPONSE:
         "createdEpoc": 1547878294
     }
 ]
+```
+## Questions and Concerns
+https://better-coder.slack.com/
