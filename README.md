@@ -10,7 +10,7 @@ This project also has some basic usage of Java8 Features as CompletableFuture.Th
 1. Build the project using mvn clean install command.
 2. Change the configuration of the DB in the application.properties in the src/main/resource folder.
 3. Run the SQL form the file DB.sql in the src/main/resource folder.
-3. mvn spring-boot:run
+3. mvn spring-boot:run / java -jar target/exercise-0.0.1-SNAPSHOT.jar
 
 ## How Disperse is calculated
 1. Make a rest api request to KIVA API to get loan.
